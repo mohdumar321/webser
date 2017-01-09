@@ -6,12 +6,12 @@
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.2.xsd">
 
-	<!-- supply loc 
-	<context:property-placeholder location="classpath:/database.properties" /> -->
+	<!-- supply loc -->
+	<context:property-placeholder location="classpath:/database.properties" />
 	<!-- DS bean -->
 	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
-		p:driverClassName="com.mysql.jdbc.Driver" p:url="${env.OPENSHIFT_MYSQL_DB_HOST}:${env.OPENSHIFT_MYSQL_DB_PORT}/${env‌​.OPENSHIFT_APP_NAME}" p:username="${env.OPENSHIFT_MYSQL_DB_USERNAME}"
-		p:password="${env.OPENSHIFT_MYSQL_DB_PASSWORD}" p:initialSize="1" p:maxActive="10"
+		p:driverClassName="${jdbc.driver}" p:url="${jdbc.url}" p:username="${jdbc.username}"
+		p:password="${jdbc.password}" p:initialSize="1" p:maxActive="10"
 		destroy-method="close" >
 	</bean>
 	<!-- configure Hibernate 4 specific local session factory bean -->
@@ -22,7 +22,7 @@
 				hibernate.format_sql=true
 				hibernate.show_sql=true
 				hibernate.hbm2ddl.auto=update
-				hibernate.dialect=org.hibernate.dialect.MySQLDialect
+				hibernate.dialect=${jdbc.dialect}
 			</value>
 		</property>
 	</bean>
