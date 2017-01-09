@@ -10,8 +10,8 @@
 	<context:property-placeholder location="classpath:/database.properties" /> -->
 	<!-- DS bean -->
 	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
-		p:driverClassName="com.mysql.jdbc.Driver" p:url="jdbc:mysql://172.30.139.49:3306/sampledb" p:username="userXB7"
-		p:password="q0QLBew0gHmO1WLN" p:initialSize="1" p:maxActive="10"
+		p:driverClassName="com.mysql.jdbc.Driver" p:url="${env.OPENSHIFT_MYSQL_DB_HOST}:${env.OPENSHIFT_MYSQL_DB_PORT}/${env‌​.OPENSHIFT_APP_NAME}" p:username="${env.OPENSHIFT_MYSQL_DB_USERNAME}"
+		p:password="${env.OPENSHIFT_MYSQL_DB_PASSWORD}" p:initialSize="1" p:maxActive="10"
 		destroy-method="close" >
 	</bean>
 	<!-- configure Hibernate 4 specific local session factory bean -->
