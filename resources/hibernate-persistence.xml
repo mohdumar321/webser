@@ -7,24 +7,17 @@
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.2.xsd">
 
 	<!-- supply loc -->
-	<!--
-	<context:property-placeholder location="classpath:/database.properties" /> -->
+
+	<context:property-placeholder location="classpath:/database.properties" /> 
 	<!-- DS bean -->
-	  <bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource"
-		destroy-method="close">
-		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
-		<property name="url"
-			value="jdbc:mysql://172.30.32.145:3306/sampledb" />
-		<property name="username" value="Root" />
-		<property name="password" value="Root123" />
-	</bean>
-	<!--
+	
+	
 	
 	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
 		p:driverClassName="${jdbc.driver}" p:url="${jdbc.url}" p:username="${jdbc.username}"
 		p:password="${jdbc.password}" p:initialSize="1" p:maxActive="10"
 		destroy-method="close" >
-	</bean>-->
+	</bean>
 	<!-- configure Hibernate 4 specific local session factory bean -->
 	<bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean"
 		p:packagesToScan="com.contact.model" p:dataSource-ref="dataSource">
